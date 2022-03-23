@@ -13,3 +13,6 @@ yarn-error.log
 /.idea
 /.vscode
 challenge.md
+/public/js
+/public/css
+/public/mix-manifest.json
