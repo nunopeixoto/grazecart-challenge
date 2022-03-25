@@ -4,7 +4,9 @@
             <OrdersList @update-order="updateOrder"></OrdersList>
         </div>
         <div class="col-span-2 ml-4 mr-24">
-            order goes here
+            <Order
+                :orderId="selectedOrderId"
+            ></Order>
         </div>
     </div>
 </template>
