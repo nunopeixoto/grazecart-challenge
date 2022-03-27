@@ -29,12 +29,20 @@
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Products</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                <ul class="list-disc pl-4">
-                                    <li v-for="product in order.items" :key="product.id">
-                                        {{ product.title }}
-                                    </li>
-                                </ul>
+                                <div class="pb-2" v-for="product in order.items" :key="product.id">
+                                    <span> Item #{{product.id}} </span>
+                                    <ul class="list-disc pl-4 ">
+                                        <li> Title: {{ product.title }} </li>
+                                        <li> Quantity: {{ product.quantity }} </li>
+                                        <li> Unit: {{ product.unit_of_issue }} </li>
+                                        <li> Subtotal: ${{ product.subtotal / 100 }} </li>
+                                    </ul>
+                                </div>
                             </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Total</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"> ${{ order.total / 100 }} </dd>
                         </div>
                     </dl>
                 </div>
