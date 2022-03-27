@@ -24,7 +24,7 @@ class OrderController extends Controller
             'Authorization' => 'Bearer ' . config('grazecart.key')
         ])
         ->get('https://paramount.staging.grazecart.io/api/v1/orders', [
-            'page' => $validated['page'] ?? 1
+            'page' => $request->input()['page'] ?? 1
         ])
         ->json();
 
