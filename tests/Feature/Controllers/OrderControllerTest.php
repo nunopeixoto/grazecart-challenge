@@ -174,6 +174,12 @@ class OrderControllerTest extends TestCase
                 'total'
             ]
         ]);
+
+        $response = $this->get('/api/orders?page=NaN');
+        $response->assertStatus(422);
+
+        $response = $this->get('/api/orders?page=-1');
+        $response->assertStatus(422);
     }
 
     public function test_order_show()
@@ -183,5 +189,8 @@ class OrderControllerTest extends TestCase
         $response->assertJsonStructure([
             'data' => $this->orderSchema
         ]);
+
+        $response = $this->get('/api/orders/NaN');
+        $response->assertStatus(404);
     }
 }

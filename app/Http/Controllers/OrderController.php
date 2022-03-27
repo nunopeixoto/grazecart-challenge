@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $validator = Validator::make($request->input(), [
-            'page' => 'numeric'
+            'page' => 'numeric|min:1'
         ]);
 
         if ($validator->fails()) {
