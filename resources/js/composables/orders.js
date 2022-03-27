@@ -4,10 +4,16 @@ import axios from "axios";
 export default function useOrders() {
     const orders = ref([])
     const order = ref([])
+    const pagination = ref([])
 
-    const getOrders = async () => {
-        let response = await axios.get('/api/orders')
+    const getOrders = async (page) => {
+        let response = await axios.get('/api/orders', {
+            params : {
+                page: page ? page : 1
+            }
+        });
         orders.value = response.data.data;
+        pagination.value = response.data.meta;
     }
 
     const getOrder = async (id) => {
@@ -19,6 +25,7 @@ export default function useOrders() {
         orders,
         order,
         getOrders,
-        getOrder
+        getOrder,
+        pagination
     }
 }
