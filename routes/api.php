@@ -20,5 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(OrderController::class)->group(function () {
     Route::get('/orders', 'index');
-    Route::get('/orders/{id}', 'show');
+    Route::get('/orders/{orderId}', 'show')
+        ->where('orderId', '[0-9]+');
 });
