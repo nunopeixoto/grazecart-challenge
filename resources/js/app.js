@@ -8,8 +8,8 @@ import Loader from './components/loader/Loader';
 
 const app = createApp({});
 
-app.component('OrdersContainer', OrdersContainer);
-app.component('OrdersList', OrdersList);
-app.component('Order', Order);
-app.component('Loader', Loader);
-app.mount('#app');
+app.component('OrdersContainer', OrdersContainer)
+    .component('OrdersList', OrdersList)
+    .component('Order', Order)
+    .component('Loader', Loader)
+    .mount('#app');
