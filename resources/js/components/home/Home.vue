@@ -1,3 +1,0 @@
-<template>
-    Vue component
-</template>
