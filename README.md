@@ -20,3 +20,9 @@ vi .env
 php artisan key:generate
 php artisan serve
 ```
+
+## Testing
+- To run both Unit and Feature tests
+```bash
+php artisan test
+```
