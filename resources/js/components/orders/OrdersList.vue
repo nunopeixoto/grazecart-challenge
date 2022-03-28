@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-white shadow-sm sm:rounded-lg border-b border-gray-200 h-70-full">
+    <div class="bg-white shadow-sm border-b border-gray-200 h-70-full">
         <div class="border-b border-black">
-            <h1 class="text-xl font-semibold  py-4 px-4"> All orders </h1>
+            <h1 class="text-xl font-bold  py-4 px-4"> All orders </h1>
         </div>
         <div v-if="loading" class="text-center py-2">
             <Loader></Loader>
@@ -10,9 +10,12 @@
             <div class="overflow-y-auto h-5/6">
                 <div v-for="order in orders" :key="order.id" >
                     <article class="border-b border-gray py-4 px-4 hover:bg-gray-100 cursor-pointer" @click="selectOrder(order.id)" >
-                        <p> Order #{{order.id}} </p>
-                        <p> {{order.customer_first_name}} {{order.customer_last_name}} </p>
-                        <p> ${{order.total / 100}} </p>
+                        <p class="font-semibold flex items-center ">
+                             Order #{{order.id}}
+                            <span class="material-icons pl-1">list_alt</span>
+                        </p>
+                        <p> Customer: {{order.customer_first_name}} {{order.customer_last_name}} </p>
+                        <p> Total: ${{order.total / 100}} </p>
                     </article>
                 </div>
             </div>
