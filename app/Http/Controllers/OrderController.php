@@ -19,27 +19,20 @@ class OrderController extends Controller
             abort(422, $validator->errors());
         }
 
-        $orders = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . config('grazecart.key')
-        ])
-        ->get('https://paramount.staging.grazecart.io/api/v1/orders', [
-            'page' => $request->input()['page'] ?? 1
-        ])
-        ->json();
+        $orders = Http::grazecart()
+            ->get('/orders', [
+                'page' => $request->input()['page'] ?? 1
+            ])->json();
 
         return response($orders, 200);
     }
 
     public function show(int $id)
     {
-        $orders = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . config('grazecart.key')
-        ])
-        ->get("https://paramount.staging.grazecart.io/api/v1/orders/$id")
-        ->json();
+        $order = Http::grazecart()
+            ->get("/orders/$id")
+            ->json();
 
-        return response($orders, 200);
+        return response($order, 200);
     }
 }

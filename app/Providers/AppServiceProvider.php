@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Http;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Http::macro('grazecart', function () {
+            return Http::withHeaders([
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . config('grazecart.key')
+            ])->baseUrl(config('grazecart.url'));
+        });
     }
 }
