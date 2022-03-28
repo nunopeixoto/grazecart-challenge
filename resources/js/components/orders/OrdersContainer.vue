@@ -1,9 +1,9 @@
 <template>
-    <div class="grid grid-cols-3 gap-4 py-12">
-        <div class="ml-24">
+    <div class="gap-4 py-12 px-12 grid grid-cols-1 md:px-0 md:grid-cols-3">
+        <div class="ml-8 xl:ml-24">
             <OrdersList @update-order="updateOrder"></OrdersList>
         </div>
-        <div class="col-span-2 ml-4 mr-24">
+        <div class="ml-8 md:col-span-2 md:mr-24 xl:mr-24 md:block">
             <Order
                 :orderId="selectedOrderId"
             ></Order>
