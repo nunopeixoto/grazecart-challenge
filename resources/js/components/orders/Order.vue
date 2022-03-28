@@ -7,7 +7,7 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">Order #{{order.id}}</h3>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Created at {{ order.created_at }} </p>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Created at {{ formattedDate }} </p>
                 </div>
                 <div class="border-t border-gray-200">
                     <dl>
@@ -53,6 +53,9 @@
 
 <script>
 import useOrders from "../../composables/orders";
+import moment from 'moment';
+import { computed } from 'vue';
+
 export default {
     props: ['orderId'],
     watch: {
@@ -66,9 +69,13 @@ export default {
     },
     setup() {
         const { order, getOrder } = useOrders();
+        const formattedDate = computed(() => {
+            return moment(String(order.value.created_at)).format('MM/DD/YYYY hh:mm')
+        });
         return {
             order,
-            getOrder
+            getOrder,
+            formattedDate
         }
     },
     data() {
